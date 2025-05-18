@@ -114,7 +114,7 @@ async function getWeather(city) {
 
     // Save to history
     if (cityName.toLowerCase() !== "college park") {
-      const saveRes = await fetch("/api/save-history", {
+      const saveRes = await fetch("/api/add-history", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
