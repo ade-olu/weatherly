@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       clearBtn.addEventListener("click", async () => {
         try {
           const confirmed = confirm(
-            "Are you sure you want to clear all history?"
+            "Are you sure you want to clear all your history?"
           );
           if (!confirmed) return;
 
@@ -113,7 +113,7 @@ document.addEventListener("DOMContentLoaded", async () => {
               historyBox.classList.add("history-box");
             }
 
-            alert("Your search history cleared!");
+            alert("Your search history is cleared!");
           } else {
             const { error } = await res.json();
             console.error("Error clearing history:", error);
