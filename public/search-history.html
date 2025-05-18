@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="scripts.js" defer></script>
+    <title>Search History</title>
+  </head>
+  <body>
+    <!-- Main container -->
+    <div class="container">
+      <!-- Sidebar nav -->
+      <nav class="sidebar-nav">
+        <ul>
+          <li>
+            <a href="index.html">
+              <img src="icons/home.svg" alt="Home" class="nav-icon" /> Home</a
+            >
+          </li>
+
+          <li>
+            <a href="about.html">
+              <img src="icons/about.svg" alt="About" class="nav-icon" />
+              About</a
+            >
+          </li>
+          <li>
+            <a href="search-history.html" style="background-color: #04110e">
+              <img
+                src="icons/search-history.svg"
+                alt="Search History"
+                class="nav-icon"
+              />
+              History</a
+            >
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Main content area -->
+      <div class="content-area">
+        <!-- Top nav -->
+        <nav class="top-nav nav">
+          <h1><a href="index.html">Recent Search History</a></h1>
+        </nav>
+
+        <!-- Search history section -->
+        <div class="dashboard-container">
+          <div class="dashboard-box history-box">
+            <div id="empty-state" class="empty-state">
+              <img src="icons/empty.svg" alt="Empty Icon" class="empty-icon" />
+              <div class="empty-text">
+                <h2>No Search History</h2>
+                <p>
+                  Your search history will appear here once you start searching
+                  for weather data.
+                </p>
+              </div>
+            </div>
+
+            <ul id="history-list"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

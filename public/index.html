@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Leaflet CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <!-- Leaflet JS -->
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+    <script src="scripts.js" defer></script>
+    <title>Home</title>
+  </head>
+  <body>
+    <!-- Main container -->
+    <div class="container">
+      <!-- Sidebar nav -->
+      <nav class="sidebar-nav">
+        <ul>
+          <li>
+            <a href="index.html" style="background-color: #04110e">
+              <img src="icons/home.svg" alt="Home" class="nav-icon" /> Home</a
+            >
+          </li>
+          <li>
+            <a href="about.html">
+              <img src="icons/about.svg" alt="About" class="nav-icon" />
+              About</a
+            >
+          </li>
+          <li>
+            <a href="search-history.html">
+              <img
+                src="icons/search-history.svg"
+                alt="Search History"
+                class="nav-icon"
+              />
+              History</a
+            >
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Main content area -->
+      <div class="content-area">
+        <!-- Top nav -->
+        <nav class="top-nav">
+          <!-- Search bar -->
+          <form class="search-bar">
+            <input
+              type="text"
+              id="search"
+              placeholder="Enter a city"
+              required
+            />
+            <button id="search-btn">
+              <img src="icons/search.svg" alt="Search" class="search-icon" />
+            </button>
+          </form>
+        </nav>
+
+        <!-- Weather dashboard -->
+        <div class="dashboard-grid">
+          <!-- Current weather summary -->
+          <div class="dashboard-box" id="current-weather">
+            <h2>Current Weather</h2>
+            <div class="weather-summary">
+              <div class="weather-header">
+                <div id="city">
+                  <img
+                    src="icons/location.svg"
+                    alt="Location Icon"
+                    class="location-icon"
+                  />
+                  <!-- city name will be inserted here -->
+                </div>
+              </div>
+              <div class="weather-info">
+                <p id="temp"></p>
+                <img src="" alt="Weather Icon" id="weather-icon" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Today's metrics -->
+          <div class="dashboard-box" id="weather-metrics">
+            <h2>Today's Metrics</h2>
+            <div id="metrics-list">
+              <!-- Relative humidity -->
+              <div class="metric" id="humidity-metric">
+                <img
+                  src="icons/metrics/humidity.svg"
+                  alt="Humidity Icon"
+                  class="metric-icon"
+                  id="humidity-icon"
+                />
+                <div class="metric-info">
+                  <p>Humidity</p>
+                  <p class="info" id="humidity"></p>
+                </div>
+              </div>
+              <!-- Wind speed -->
+              <div class="metric" id="wind-metric">
+                <img
+                  src="icons/metrics/wind.svg"
+                  alt="Wind Speed Icon"
+                  class="metric-icon"
+                  id="wind-icon"
+                />
+                <div class="metric-info">
+                  <p>Wind</p>
+                  <p class="info" id="wind"></p>
+                </div>
+              </div>
+              <!-- Visibility -->
+              <div class="metric" id="visibility-metric">
+                <img
+                  src="icons/metrics/visibility.svg"
+                  alt="Visibility Icon"
+                  class="metric-icon"
+                  id="visibility-icon"
+                />
+                <div class="metric-info">
+                  <p>Visibility</p>
+                  <p class="info" id="visibility"></p>
+                </div>
+              </div>
+              <!-- Rain -->
+              <div class="metric" id="rain-metric">
+                <img
+                  src="icons/metrics/rain.svg"
+                  alt="Rain Icon"
+                  class="metric-icon"
+                  id="rain-icon"
+                />
+                <div class="metric-info">
+                  <p>Rain</p>
+                  <p class="info" id="rain"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 7-Day forecast -->
+          <div class="dashboard-box box-3" id="forecast">
+            <h2>7-Day Forecast</h2>
+            <div class="forecast-grid">
+              <!-- Days of the week -->
+              <div class="days" id="sun">
+                <p>Sun</p>
+                <img src="" alt="Weather Icon" class="forecast-icon" />
+                <p id="max-min-temp">
+                  <span id="max-temp"></span>
+                  <span id="min-temp"></span>
+                </p>
+              </div>
+              <div class="days" id="mon">
+                <p>Mon</p>
+                <img src="" alt="Weather Icon" class="forecast-icon" />
+                <p id="max-min-temp">
+                  <span id="max-temp"></span>
+                  <span id="min-temp"></span>
+                </p>
+              </div>
+              <div class="days" id="tue">
+                <p>Tue</p>
+                <img src="" alt="Weather Icon" class="forecast-icon" />
+                <p id="max-min-temp">
+                  <span id="max-temp"></span>
+                  <span id="min-temp"></span>
+                </p>
+              </div>
+              <div class="days" id="wed">
+                <p>Wed</p>
+                <img src="" alt="Weather Icon" class="forecast-icon" />
+                <p id="max-min-temp">
+                  <span id="max-temp"></span>
+                  <span id="min-temp"></span>
+                </p>
+              </div>
+              <div class="days" id="thu">
+                <p>Thu</p>
+                <img src="" alt="Weather Icon" class="forecast-icon" />
+                <p id="max-min-temp">
+                  <span id="max-temp"></span>
+                  <span id="min-temp"></span>
+                </p>
+              </div>
+              <div class="days" id="fri">
+                <p>Fri</p>
+                <img src="" alt="Weather Icon" class="forecast-icon" />
+                <p id="max-min-temp">
+                  <span id="max-temp"></span>
+                  <span id="min-temp"></span>
+                </p>
+              </div>
+              <div class="days" id="sat">
+                <p>Sat</p>
+                <img src="" alt="Weather Icon" class="forecast-icon" />
+                <p id="max-min-temp">
+                  <span id="max-temp"></span>
+                  <span id="min-temp"></span>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Temperature trend chart -->
+          <div class="dashboard-box box-4" id="weather-chart">
+            <h2>Temperature Trend</h2>
+            <canvas id="tempChart" width="600" height="200"></canvas>
+          </div>
+
+          <!-- City map -->
+          <div class="dashboard-box box-5" id="city-map">
+            <div id="map-city">
+              <img
+                src="icons/location.svg"
+                alt="Location Icon"
+                class="location-icon"
+              />
+              <!-- city name will be inserted here -->
+            </div>
+            <div id="map"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
