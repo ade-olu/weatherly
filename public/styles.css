@@ -81,11 +81,16 @@ body {
 /* Top nav bar */
 .top-nav {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   height: 5rem;
   background-color: #04110e;
   padding: 0 1.5rem;
+}
+
+.top-nav h1 {
+  font-size: 30px;
+  color: #fff;
 }
 
 .nav {
@@ -106,6 +111,12 @@ body {
   border: 1px solid #061f18;
   background-color: #061f18;
   color: #fff;
+  transition: border-color 0.25s;
+}
+
+.search-bar input:focus {
+  outline: none;
+  border: 1px solid #2b9456;
 }
 
 .search-icon {
@@ -114,12 +125,17 @@ body {
 }
 
 .search-bar button {
-  padding: 0.5rem 1rem;
-  background-color: #2b9456;
+  padding: 0.5rem 1.2rem;
+  background-color: #061f18;
   border: none;
   color: #fff;
   border-radius: 1000px;
   cursor: pointer;
+  transition: background-color 0.25s;
+}
+
+.search-bar button:hover {
+  background-color: #2b9456;
 }
 
 h1 a {
@@ -297,6 +313,13 @@ h1 a {
   flex-direction: column;
   gap: 0.5rem;
 }
+
+.apis-libraries a,
+.author-info a {
+  color: #fff;
+  text-decoration: none;
+}
+
 /* Search history page */
 /* Dashbaord container */
 .dashboard-container {
@@ -308,6 +331,7 @@ h1 a {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  padding: 0;
 }
 
 .empty-state {
@@ -321,10 +345,6 @@ h1 a {
   text-align: center;
 }
 
-.empty-text {
-  margin-right: 1.5rem;
-}
-
 .empty-icon {
   width: 160px;
   height: auto;
@@ -336,4 +356,25 @@ h1 a {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.history-item {
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #7f838e;
+}
+
+.history-item span {
+  display: flex;
+  align-items: center;
+  color: #fff;
+}
+
+.history-item span {
+  cursor: pointer;
+}
+
+.history-item img {
+  width: 16px;
+  height: auto;
+  margin-right: 1rem;
 }

@@ -54,12 +54,27 @@ document.addEventListener("DOMContentLoaded", async () => {
             : "";
         const fullDisplay = `${item.city}${displayState}, ${item.country}`;
         const li = document.createElement("li");
-        li.textContent = fullDisplay;
+        li.className = "history-item";
+
+        const span = document.createElement("span");
+        const img = document.createElement("img");
+        img.src = "icons/empty.svg";
+        img.alt = "Search History Icon";
+        span.appendChild(img);
+
+        // Add the location text
+        span.append(` ${fullDisplay}`);
+
+        // Append span to list item
+        li.appendChild(span);
+
+        // Add click listener to redirect to weather page
         li.addEventListener("click", () => {
           window.location.href = `index.html?city=${encodeURIComponent(
             item.city
           )}`;
         });
+
         list.appendChild(li);
       });
     } catch (err) {
@@ -231,24 +246,38 @@ function updateCurrentWeather(city, state, country, data) {
 
 // Function to update the forecast section
 function updateForecast(data) {
-  const days = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
-  const daily = data.daily;
+  const allDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]; // Array of day names
+  const daily = data.daily; // Get daily weather data
+  const forecastElements = document.querySelectorAll(".forecast-grid .days"); // Get all forecast elements from the HTML
 
-  days.forEach((dayId, index) => {
-    const max = daily.temperature_2m_max[index]; // Max temperature
-    const min = daily.temperature_2m_min[index]; // Min temperature
-    const code = daily.weather_code[index]; // Weather code
-    const iconName = getIconName(code, false); // Use daytime icon for forecast
-    const iconUrl = `https://raw.githubusercontent.com/Tomorrow-IO-API/tomorrow-weather-codes/master/V1_icons/color/${iconName}.svg`;
+  forecastElements.forEach((forecastEl, index) => {
+    const forecastDate = new Date(`${daily.time[index]}T12:00:00`); // Get the date from the daily data
+    const forecastDayIndex = forecastDate.getDay(); // Get the day of week (adjusted for local city time)
 
-    const dayEl = document.querySelector(`#${dayId}`);
-    if (dayEl) {
-      dayEl.querySelector("#max-temp").textContent = `${Math.round(max)}°`;
-      dayEl.querySelector("#min-temp").textContent = `${Math.round(min)}°`;
-      const forecastIcon = dayEl.querySelector(".forecast-icon");
+    const label = allDays[forecastDayIndex]; // Get the day name from the array
+
+    // Update the day label
+    const dayLabel = forecastEl.querySelector("p");
+    if (dayLabel) dayLabel.textContent = label;
+
+    // Max and min temperatures
+    const max = daily.temperature_2m_max[index]; // Get the max temperature
+    const min = daily.temperature_2m_min[index]; // Get the min temperature
+    const maxTemp = forecastEl.querySelector("#max-temp"); // Get the max temperature element from the HTML
+    const minTemp = forecastEl.querySelector("#min-temp"); // Get the min temperature element from the HTML
+    if (maxTemp) maxTemp.textContent = `${Math.round(max)}°`; // Update max temperature
+    if (minTemp) minTemp.textContent = `${Math.round(min)}°`; // Update min temperature
+
+    // Weather icon
+    const code = daily.weather_code[index]; // Get the weather code
+    const iconName = getIconName(code, false); // Get the icon name (daytime)
+    const iconUrl = `https://raw.githubusercontent.com/Tomorrow-IO-API/tomorrow-weather-codes/master/V1_icons/color/${iconName}.svg`; // Get the icon URL
+
+    const forecastIcon = forecastEl.querySelector(".forecast-icon");
+    if (forecastIcon) {
       forecastIcon.src = iconUrl;
       forecastIcon.onerror = () => {
-        forecastIcon.src = "icons/weather/cloudy.svg"; // Fallback if icon fails to load
+        forecastIcon.src = "icons/weather/cloudy.svg"; // Fallback to cloudy if the icon fails to load
       };
     }
   });
