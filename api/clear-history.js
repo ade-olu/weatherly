@@ -6,9 +6,15 @@ const supabase = createClient(
 );
 
 export default async function handler(req, res) {
-  if (req.method !== "DELETE") return res.status(405).end("Method Not Allowed");
+  if (req.method !== "DELETE") {
+    return res.status(405).json({ message: "Method Not Allowed" });
+  }
 
-  const { error } = await supabase.from("search-history").delete();
+  // Use a dummy WHERE clause to satisfy RLS
+  const { error } = await supabase
+    .from("search-history")
+    .delete()
+    .gt("id", "00000000-0000-0000-0000-000000000000");
 
   if (error) {
     return res.status(500).json({ error: error.message });
