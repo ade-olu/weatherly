@@ -48,6 +48,7 @@
         <!-- Search history section -->
         <div class="dashboard-container">
           <div class="dashboard-box history-box">
+            <!-- Empty state when there's no search result or when the history is deleted -->
             <div id="empty-state" class="empty-state">
               <img src="icons/empty.svg" alt="Empty Icon" class="empty-icon" />
               <div class="empty-text">
@@ -62,6 +63,15 @@
             <ul id="history-list">
               <!-- Search history items will be inserted here -->
             </ul>
+            <!-- Clear history button -->
+            <button id="clear-history-btn" class="clear-history">
+              <img
+                src="icons/delete.svg"
+                alt="Clear History"
+                class="delete-icon"
+              />
+              Clear Search History
+            </button>
           </div>
         </div>
       </div>

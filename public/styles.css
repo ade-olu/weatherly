@@ -345,7 +345,7 @@ h1 a {
   text-align: center;
 }
 
-.empty-icon {
+.state-icon {
   width: 160px;
   height: auto;
 }
@@ -377,4 +377,29 @@ h1 a {
   width: 16px;
   height: auto;
   margin-right: 1rem;
+}
+
+.clear-history {
+  font-family: "Atkinson Hyperlegible Next", sans-serif !important;
+  font-size: 16px;
+  padding: 0.5rem 1rem;
+  background-color: #04110e;
+  border: none;
+  color: #fff;
+  border-radius: 1000px;
+  cursor: pointer;
+  transition: background-color 0.25s;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.clear-history:hover {
+  background-color: #eb2855;
+}
+
+.delete-icon {
+  width: 16px;
+  height: auto;
 }

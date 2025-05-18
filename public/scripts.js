@@ -37,11 +37,16 @@ document.addEventListener("DOMContentLoaded", async () => {
       const list = document.querySelector("#history-list");
       const emptyState = document.querySelector("#empty-state");
       const historyBox = document.querySelector(".history-box");
+      const clearBtn = document.getElementById("clear-history-btn");
 
       // Check if the history list is empty
       if (history.length > 0) {
-        if (emptyState) emptyState.remove(); // Remove empty state message
+        if (emptyState) emptyState.style.display = "none"; // Hide empty state message
         if (historyBox) historyBox.classList.remove("history-box");
+        if (clearBtn) clearBtn.style.display = "inline-flex"; // Show the clear button
+      } else {
+        if (emptyState) emptyState.style.display = "flex"; // Show empty state message
+        if (clearBtn) clearBtn.style.display = "none"; // Hide the clear button
       }
 
       history.forEach((item) => {
@@ -79,6 +84,39 @@ document.addEventListener("DOMContentLoaded", async () => {
       });
     } catch (err) {
       console.error("Failed to load history:", err);
+    }
+
+    // Clear history functionality
+    const clearBtn = document.getElementById("clear-history-btn");
+    if (clearBtn) {
+      clearBtn.addEventListener("click", async () => {
+        try {
+          const confirmed = confirm(
+            "Are you sure you want to clear all history?"
+          );
+          if (!confirmed) return;
+
+          const res = await fetch("/api/clear-history", {
+            method: "DELETE",
+          });
+
+          if (res.ok) {
+            // Clear from the HTML
+            document.querySelector("#history-list").innerHTML = "";
+            if (clearBtn) clearBtn.style.display = "none"; // Hide the button after clear
+            const emptyState = document.querySelector("#empty-state");
+            if (emptyState) emptyState.style.display = "block"; // Show empty state again
+            alert("Search history cleared!");
+          } else {
+            const { error } = await res.json();
+            console.error("Error clearing history:", error);
+            alert("Failed to clear history.");
+          }
+        } catch (err) {
+          console.error("Error:", err);
+          alert("Something went wrong.");
+        }
+      });
     }
   }
 });
