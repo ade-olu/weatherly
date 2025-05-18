@@ -394,6 +394,7 @@ h1 a {
   justify-content: center;
   gap: 0.5rem;
   margin-top: 1rem;
+  font-weight: bold;
 }
 
 .clear-history:hover {
