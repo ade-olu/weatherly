@@ -41,8 +41,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       // Check if the history list is empty
       if (history.length > 0) {
-        if (emptyState) emptyState.style.display = "none"; // Hide empty state message
-        if (historyBox) historyBox.classList.remove("history-box");
+        if (emptyState) emptyState.style.display = "none"; // Hide the empty state message
+        if (historyBox) historyBox.classList.remove("history-box"); // Remove the placeholder class
         if (clearBtn) clearBtn.style.display = "inline-flex"; // Show the clear button
       } else {
         if (emptyState) emptyState.style.display = "flex"; // Show empty state message
@@ -105,8 +105,15 @@ document.addEventListener("DOMContentLoaded", async () => {
             document.querySelector("#history-list").innerHTML = "";
             if (clearBtn) clearBtn.style.display = "none"; // Hide the button after clear
             const emptyState = document.querySelector("#empty-state");
-            if (emptyState) emptyState.style.display = "block"; // Show empty state again
-            alert("Search history cleared!");
+            if (emptyState) emptyState.style.display = "flex"; // Show empty state again
+
+            // Add back the history-box class after clearing
+            const historyBox = document.querySelector(".dashboard-box");
+            if (historyBox && !historyBox.classList.contains("history-box")) {
+              historyBox.classList.add("history-box");
+            }
+
+            alert("Your search history cleared!");
           } else {
             const { error } = await res.json();
             console.error("Error clearing history:", error);
