@@ -6,12 +6,21 @@ const supabase = createClient(
 );
 
 export default async function handler(req, res) {
-  if (req.method !== "DELETE") {
+  if (req.method !== "POST") {
     return res.status(405).json({ message: "Method not allowed" });
   }
 
-  const { error } = await supabase.from("search-history").delete().neq("id", 0); // Delete all rows
+  const { city, state, country } = req.body;
+
+  const { error } = await supabase.from("search-history").insert([
+    {
+      city,
+      state,
+      country,
+      searched_at: new Date().toISOString(),
+    },
+  ]);
 
   if (error) return res.status(500).json({ error });
-  return res.status(200).json({ message: "History cleared" });
+  return res.status(200).json({ message: "Search saved" });
 }

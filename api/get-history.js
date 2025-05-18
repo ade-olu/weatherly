@@ -8,7 +8,7 @@ const supabase = createClient(
 export default async function handler(req, res) {
   const { data, error } = await supabase
     .from("search-history")
-    .select("*") // This already includes state
+    .select("*")
     .order("searched_at", { ascending: false })
     .limit(5);
 

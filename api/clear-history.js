@@ -1,9 +1,14 @@
-import { supabase } from "./supabaseClient"; // your Supabase client setup
+import { createClient } from "@supabase/supabase-js";
+
+const supabase = createClient(
+  process.env.SUPABASE_URL,
+  process.env.SUPABASE_API_KEY
+);
 
 export default async function handler(req, res) {
   if (req.method !== "DELETE") return res.status(405).end("Method Not Allowed");
 
-  const { error } = await supabase.from("search_history").delete().neq("id", 0); // delete all
+  const { error } = await supabase.from("search-history").delete().neq("id", 0);
 
   if (error) {
     return res.status(500).json({ error: error.message });
