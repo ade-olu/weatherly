@@ -382,7 +382,7 @@ h1 a {
 .clear-history {
   font-family: "Atkinson Hyperlegible Next", sans-serif !important;
   font-size: 16px;
-  padding: 1rem 1.5rem;
+  padding: 0.5rem 1rem;
   background-color: #04110e;
   border: none;
   color: #fff;
