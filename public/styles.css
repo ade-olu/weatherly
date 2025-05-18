@@ -404,3 +404,41 @@ h1 a {
   width: 16px;
   height: auto;
 }
+
+/* Mobile message */
+.mobile-message {
+  display: none !important;
+  height: 100vh;
+  width: 100%;
+  background-color: #04110e;
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  overflow: hidden !important;
+}
+
+/* Responsiveness for small screens */
+@media screen and (max-width: 1024px) {
+  body {
+    overflow: hidden !important;
+  }
+
+  .container {
+    display: none !important;
+    overflow: hidden !important;
+  }
+
+  .mobile-message {
+    display: flex !important;
+  }
+}
