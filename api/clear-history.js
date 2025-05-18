@@ -8,7 +8,7 @@ const supabase = createClient(
 export default async function handler(req, res) {
   if (req.method !== "DELETE") return res.status(405).end("Method Not Allowed");
 
-  const { error } = await supabase.from("search-history").delete().neq("id", 0);
+  const { error } = await supabase.from("search-history").delete();
 
   if (error) {
     return res.status(500).json({ error: error.message });
