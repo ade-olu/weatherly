@@ -170,5 +170,5 @@ vercel --prod
 ## About the Developer
 
 **Oluwatobiloba Adegbaju**  
-Frontend Developer & UI/UX Designer
+Frontend Developer & UI/UX Designer  
 [Portfolio](https://adeolu.netlify.app)
