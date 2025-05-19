@@ -72,7 +72,12 @@ npm install
 
 3. **Set up the environment:**
 
-Create a `.env` file in the root of the app with your Supabase credentials.
+Create a `.env` file in the root of the app with your Supabase credentials:
+
+```
+SUPABASE_URL=your_supabase_url
+SUPABASE_API_KEY=your_supabase_anon_key
+```
 
 ## Running the App
 
