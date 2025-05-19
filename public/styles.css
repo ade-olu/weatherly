@@ -318,6 +318,12 @@ h1 a {
 .author-info a {
   color: #fff;
   text-decoration: none;
+  transition: color 0.25s;
+}
+
+.author-info a:hover,
+.apis-libraries a:hover {
+  color: #2b9456;
 }
 
 /* Search history page */
