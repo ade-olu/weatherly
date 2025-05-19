@@ -1,3 +1,30 @@
+// Page animation effects
+// Fade-in effect on page load
+document.addEventListener("DOMContentLoaded", () => {
+  document.body.classList.add("fade-in");
+});
+
+// Fade-out effect on link click
+document.querySelectorAll("a[href]").forEach((link) => {
+  const url = new URL(link.href, window.location.href);
+  const isInternalLink =
+    url.hostname === window.location.hostname && !url.hash && !link.target;
+
+  if (isInternalLink) {
+    link.addEventListener("click", function (e) {
+      e.preventDefault();
+      const href = this.getAttribute("href");
+
+      document.body.classList.remove("fade-in");
+      document.body.style.opacity = 0;
+
+      setTimeout(() => {
+        window.location.href = href;
+      }, 200);
+    });
+  }
+});
+
 let tempChartInstance; // Initialize chart instance
 
 // Function to handle the search bar

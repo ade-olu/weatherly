@@ -7,6 +7,12 @@ body {
   padding: 0;
   box-sizing: border-box;
   background-color: #04110e;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+body.fade-in {
+  opacity: 1;
 }
 
 .container {
