@@ -104,6 +104,7 @@ Make sure that RLS is enabled on the `search-history` table and create the follo
 - **Policy Behavior**: Permissive
 - **Policy Command**: INSERT
 - **Target Roles**: Defaults to all (public) roles if none selected
+
   ```
   create policy "Enable insert access for all users"
   on "public"."search-history"
@@ -122,6 +123,7 @@ Make sure that RLS is enabled on the `search-history` table and create the follo
 - **Policy Behavior**: Permissive
 - **Policy Command**: SELECT
 - **Target Roles**: Defaults to all (public) roles if none selected
+
   ```
   create policy "Enable read access for all users"
   on "public"."search-history"
