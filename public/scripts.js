@@ -408,6 +408,9 @@ async function renderTemperatureChart(latitude, longitude) {
               color: "#fff",
               font: { family: "Atkinson Hyperlegible Next, sans-serif" },
             },
+            grid: {
+              color: "#04110e",
+            },
           },
           x: {
             title: {
@@ -419,6 +422,9 @@ async function renderTemperatureChart(latitude, longitude) {
             ticks: {
               color: "#fff",
               font: { family: "Atkinson Hyperlegible Next, sans-serif" },
+            },
+            grid: {
+              color: "#04110e",
             },
           },
         },

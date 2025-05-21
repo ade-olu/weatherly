@@ -1,6 +1,6 @@
 # 🌤️ Weatherly
 
-[Weatherly](https://weatherly-orcin.vercel.app/) is a web application that provides real-time weather conditions, forecasts, and metrics for cities around the world.
+[Weatherly](https://weatherly-website-app.vercel.app/) is a web application that provides real-time weather conditions, forecasts, and metrics for cities around the world.
 
 ## Features
 
